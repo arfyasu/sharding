@@ -1,9 +1,9 @@
 datasources = {
 
-  datasource(name: 'ds2') {
-    domainClasses([Country, State])
+  datasource(name: 'index') {
+    domainClasses(["Library"])
     driverClassName('com.mysql.jdbc.Driver')
-    url('jdbc:mysql://localhost/sharding_devel2')
+    url('jdbc:mysql://localhost/sharding_devel')
     username('root')
     password('')
     dbCreate('create-drop')
@@ -14,18 +14,18 @@ datasources = {
       cache {
         use_second_level_cache(false)
         use_query_cache(false)
+        provider_class('net.sf.ehcache.hibernate.EhCacheProvider')
       }
     }
   }
 
-  datasource(name: 'ds3') {
+  datasource(name: 'ds2') {
     driverClassName('com.mysql.jdbc.Driver')
-    url('jdbc:mysql://localhost/sharding_devel3')
+    url('jdbc:mysql://localhost/sharding_devel2')
     username('root')
     password('')
     dbCreate('create-drop')
-    domainClasses([Visit])
-    services(['transactionTest'])
+    domainClasses(["Book"])
     logSql(true)
     dialect(org.hibernate.dialect.MySQL5InnoDBDialect)
     pooled(true)
@@ -34,7 +34,9 @@ datasources = {
       cache {
         use_second_level_cache(true)
         use_query_cache(true)
+        provider_class('net.sf.ehcache.hibernate.EhCacheProvider')
       }
     }
   }
+
 }
