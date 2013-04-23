@@ -30,6 +30,10 @@ public class ShardEntityInterceptor extends EmptyInterceptor implements Applicat
 
     // If the database starting a transaction isn't the index database then we need to start a transaction
     // for the index database
+    println "----"
+    println trnsDatabase
+    println currentIndex.name
+    println "----"
     if (!trnsDatabase.equals(currentIndex.name)) {
 
       // Get the transaction manager for the index database

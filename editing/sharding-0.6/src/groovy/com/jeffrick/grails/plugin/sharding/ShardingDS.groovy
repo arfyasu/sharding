@@ -25,6 +25,7 @@ class ShardingDS extends AbstractRoutingDataSource implements ApplicationContext
   }
 
   protected Object determineCurrentLookupKey() {
+    println CurrentShard.getIndex()
     return CurrentShard.getIndex()
   }
 }

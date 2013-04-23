@@ -3,6 +3,7 @@ package com.jeffrick.grails.plugins.services
 import com.jeffrick.grails.plugin.sharding.CurrentShard
 import com.jeffrick.grails.plugin.sharding.ShardConfig
 import com.jeffrick.grails.plugin.sharding.Shards
+import com.jeffrick.grails.plugin.sharding.Index
 import com.jeffrick.grails.plugins.sharding.Shard
 
 // import com.jeffrick.grails.plugin.sharding.Index
@@ -17,7 +18,7 @@ class ShardService {
   boolean transactional = false
 
   def getShard(object) {
-    // Index currentIndex = Index.get()
+    Index currentIndex = Index.get()
     Shard currentShard
 
     // If we don't have a shard assigned go assign one

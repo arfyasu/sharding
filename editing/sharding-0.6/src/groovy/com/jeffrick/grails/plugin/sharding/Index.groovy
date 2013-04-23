@@ -35,10 +35,12 @@ class Index {
   // }
 
   static init(domain) {
-    id = 1
-    name = "index"
-    domainClass = domain
-    shardNameFieldName = "sharding_db_name"
+    Index currentIndex = new Index()
+    currentIndex.id = 1
+    currentIndex.name = "index"
+    currentIndex.domainClass = domain
+    currentIndex.shardNameFieldName = "sharding_db_name"
+    _index = currentIndex
   }
 
   static set(Index currentIndex) {

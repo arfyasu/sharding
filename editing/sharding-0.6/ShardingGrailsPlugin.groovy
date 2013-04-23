@@ -37,19 +37,19 @@ class ShardingGrailsPlugin {
     if (!dataSources) {
       return
     }
-    int shardId = 2
+    int shardId = 1
     def shards = []
     for (ds in dataSources) {
       String name = ds.name
       if (name == "index") {
-        Index shardIndex = 
+        Index.init(ds.domainClasses.first())
+      } else {
+        shardDataSources.put(shardId, ref("dataSource_$name"))
+        ShardConfig shardConfig = new ShardConfig()
+        shardConfig.id = shardId++
+        shardConfig.name = name
+        shards.add(shardConfig)
       }
-      shardDataSources.put(shardId, ref("dataSource_$name"))
-
-      ShardConfig shardConfig = new ShardConfig()
-      shardConfig.id = shardId++
-      shardConfig.name = name
-      shards.add(shardConfig)
     }
 
     Shards.shards = shards
